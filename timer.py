@@ -2,6 +2,7 @@ import time
 
 
 class Timer():
+
     def __init__(self):
         self.running = False
         self.start_time = None
@@ -20,12 +21,19 @@ class Timer():
             self.running = False
             self.elapsed_time = time.time() - self.start_time
 
-    def get_time(self):
+    def get_time(self, format: bool):
         if self.running:
             current_time = time.time()
             elapsed_time = current_time - self.start_time
-            return self.format_time(elapsed_time)
+            if format:
+                return self.format_time(elapsed_time)
+            else:
+                return elapsed_time
 
-    def format_time(self, seconds):
+    def reset(self):
+        self.__init__()
+
+    @staticmethod
+    def format_time(seconds):
         minutes, seconds = divmod(seconds, 60)
-        return f"{int(minutes):02}:{seconds:05.2f}"
+        return f"Time: {int(minutes):02}:{seconds:05.2f}"
