@@ -45,12 +45,14 @@ window = tkinter.Tk()
 window.title("Typing Speed Test")
 window.minsize(width=500, height=300)
 
+tkinter.Label(text="Try to copy text below as fast as you can:").pack()
+
 text_to_copy = tkinter.StringVar()
 change_sentence()
-text_to_copy_label = tkinter.Label(textvariable=text_to_copy)
+text_to_copy_label = tkinter.Label(textvariable=text_to_copy, font='Helvetica 18 bold')
 text_to_copy_label.pack()
 
-text_area = tkinter.Text(window, height=5, width=20)
+text_area = tkinter.Text(window, height=10, width=60)
 text_area.pack()
 
 timer_label = tkinter.Label(text="Time: 00:00:00")
